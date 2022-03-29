@@ -3,6 +3,9 @@ FROM python:3.10.2
 WORKDIR /usr/src/task
 
 RUN pip install Django
+RUN pip install whitenoise
+RUN pip install gunicorn  
+RUN pip install dj-database-url
 
 COPY . /usr/src/task/
 
