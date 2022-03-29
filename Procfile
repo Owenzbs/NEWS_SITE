@@ -1,4 +1,4 @@
-web: gunicorn news.wsgi --log-file - --log-level debug
+web: gunicorn mysite.wsgi --log-file - --log-level debug
 python manage.py collectstatic --noinput
 heroku ps:scale web=1
 manage.py migrate
