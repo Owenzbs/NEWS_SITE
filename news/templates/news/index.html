@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>List of News</title>
+</head>
+<body>
+
+    <h1>NEWS!!!</h1>  
+    <a href='/news/create'>Create News</a>   
+    <form method="post">
+        {% for i in news %}
+        <a href='news/{{i.id}}'><h3>  {{i.title}}   </h3>    </a>
+            <a href="{{i.get_absolute_url}}"></a>
+            <p>Date: {{i.created_at}}</p>
+            <p>Upvotes: {{i.amount_of_upvotes}}</p>
+            <p>Author: {{i.author_name}}</p>
+            <h3>Comments: </h3>
+            {% for j in comments %}
+                {% if i.id == j.news_id %}
+                    <p>Name: {{j.author_name}}</p>
+                    <p>Comment: {{j.content}}</p>
+                    <hr >
+                {% endif %}
+ 
+            {% endfor %}
+        
+        <hr size=10px color=green>
+        <br>
+        {% endfor %}
+    </form>
+
+</body>
+</html>

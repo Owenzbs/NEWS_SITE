@@ -1,0 +1,32 @@
+
+
+
+
+{%block content%}
+{%endblock%}
+
+<button type="button" onClick="location.href='/news'">Vote</button>
+<a href='{{news_item.title}}'></a>
+    <p>Title: {{news_item.title}}</p>
+    <p>Link: {{news_item.link}}</p>
+    <p>Votes: {{votes}}</p>
+        <p>Date: {{news_item.created_at}}</p>
+            <p>Author: {{news_item.author_name}}</p>
+            <hr>
+            <h4>Comments: </h4>
+            {%for i in comments%}
+            {%if i.news_id == news_id%}
+                <p>Author: {{i.author_name}}</p>
+                    <p>Content: {{i.content}}</p>
+                        <p>Date: {{i.created_at}}</p>
+                        <hr>
+            {%endif%}
+         
+            {%endfor%}
+ 
+            <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+                
+        <button name='Add' type="submit" class="btn btn-primary btn-block">ADD comment</button>
+        </form>
